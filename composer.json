@@ -1,0 +1,36 @@
+{
+    "name": "penguin/database",
+    "description": "The Penguin Database package.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nguyễn Hoàng Thắng Thuận",
+            "email": "thuanvp012van@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Penguin\\Component\\Database\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Penguin\\Component\\Database\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": ">=8.1",
+        "penguin/plug": "^1.0",
+        "ext-pdo": "*",
+        "swoole/ide-helper": "~5.0.0",
+        "nesbot/carbon": "3.x-dev",
+        "penguin/container": "dev-main"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "symfony/var-dumper": "7.1.x-dev"
+    }
+}
