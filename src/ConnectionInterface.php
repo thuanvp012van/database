@@ -2,13 +2,14 @@
 
 namespace Penguin\Component\Database;
 
+use PDO;
 use PDOStatement;
 
 interface ConnectionInterface
 {
-    public function select(string $query, array $bindings = []): array;
+    public function select(string $query, array $bindings = [], int $mode = PDO::FETCH_DEFAULT, mixed ...$args): array;
 
-    public function selectOne(string $query, array $bindings = []): mixed;
+    public function selectOne(string $query, array $bindings = [], int $mode = PDO::FETCH_DEFAULT, mixed ...$args): mixed;
 
     public function insert(string $query, array $bindings = []): int;
 
@@ -22,9 +23,7 @@ interface ConnectionInterface
 
     public function bindValues(PDOStatement $statement, array $bindings): static;
 
-    public function setReconnect(callable $reconnector): static;
-
     public function reconnect(): mixed;
 
-    public function disconnect(): static;
+    public function disconnect(): void;
 }

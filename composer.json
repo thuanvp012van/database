@@ -27,7 +27,10 @@
         "ext-pdo": "*",
         "swoole/ide-helper": "~5.0.0",
         "nesbot/carbon": "3.x-dev",
-        "penguin/container": "dev-main"
+        "penguin/collection": "dev-master",
+        "penguin/container": "dev-main",
+        "penguin/facade": "dev-main",
+        "penguin/events": "dev-main"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",

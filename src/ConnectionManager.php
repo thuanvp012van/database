@@ -4,27 +4,21 @@ namespace Penguin\Component\Database;
 
 class ConnectionManager
 {
-    protected PoolClusterInterface|ConnectionClusterInterface $db;
+    protected ConnectionClusterInterface $db;
 
-    public function createPoolCluster(): PoolClusterInterface
-    {
-        $this->db = new PoolCluster();
-        return $this->db;
-    }
-
-    public function createConnectionCluster(): ConnectionClusterInterface
+    public function createCluster(): ConnectionClusterInterface
     {
         $this->db = new ConnectionCluster();
         return $this->db;
     }
 
-    public function getConnection(string $groupName = null): ConnectionInterface
+    public function getCluster(): ConnectionClusterInterface
     {
-        if ($this->db instanceof ConnectionClusterInterface) {
-            return $this->db->getConnection($groupName);
-        }
+        return $this->db;
+    }
 
-        $pool = $this->db->getPool($groupName);
-        return $pool->get();
+    public function __call(string $method, array $arguments): mixed
+    {
+        return $this->getCluster()->{$method}(...$arguments);
     }
 }
